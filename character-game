@@ -1,0 +1,63 @@
+package main
+
+import (
+	"bufio"
+	"fmt"
+	"os"
+)
+
+// to define the character
+type Character struct {
+	FirstName     string
+	Height        string
+	Build         string
+	Race          string
+	PrimaryWeapon string
+}
+
+func main() {
+	fmt.Println("Welcome! to Max can code games. Would you like to build a character? [Y/N]")
+	//prints the above to welcome the user and intiate response
+
+	scanner := bufio.NewScanner(os.Stdin) //to read from keyboard
+	scanner.Scan()                        //reads from the next line of keyboard
+	answer := scanner.Text()              //stores user answer
+
+	if answer == "y" || answer == "Y" {
+		character := buildCharacter()
+		fmt.Printf("Welcome!, %s! Here are your character's stats:\n", character.FirstName)
+		fmt.Printf("Height: %s!\nBuild: %s!\nRace: %s!\nPrimary Weapon: %s!\n", character.Height, character.Build, character.Race, character.PrimaryWeapon)
+		fmt.Println("Don't forget your sword!")
+	} else {
+		fmt.Println("Maybe next time. Have a great day!")
+	}
+}
+func buildCharacter() Character {
+	var character Character
+
+	fmt.Print("Enter your first name: ")
+	scanner := bufio.NewScanner(os.Stdin)
+	scanner.Scan()
+	character.FirstName = scanner.Text()
+
+	fmt.Print("Enter your height: ")
+	scanner.Scan()
+	character.Height = scanner.Text()
+
+	fmt.Print("Enter your build: ")
+	scanner.Scan()
+	character.Build = scanner.Text()
+
+	fmt.Print("Enter your race: ")
+	scanner.Scan()
+	character.Race = scanner.Text()
+
+	fmt.Print("Enter your primary weapon: ")
+	scanner.Scan()
+	character.PrimaryWeapon = scanner.Text()
+
+	//fmt.Println(getSwordImage())
+	return character
+
+	// func getSwordImage() string {
+}
